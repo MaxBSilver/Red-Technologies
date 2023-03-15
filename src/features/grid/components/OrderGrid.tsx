@@ -3,7 +3,7 @@ import { useOrders } from "../api/getOrders";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Toolbar } from "./Toolbar";
 
-export const Grid = () => {
+export const OrderGrid = () => {
   // Component State
   const [orders, setOrders] = useState([]);
 
