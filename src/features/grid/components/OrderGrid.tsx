@@ -1,23 +1,29 @@
 import { useMemo, useState } from "react";
 import { useOrders } from "../api/getOrders";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { Toolbar } from "./Toolbar";
+import { DataGrid, GridColDef, GridRowSelectionModel } from "@mui/x-data-grid";
+import { OrderToolbar } from "./Toolbar";
 import { IOrder } from "../types/order.type";
+import { deleteOrders } from "../api/deleteOrders";
 
 export const OrderGrid = () => {
   // Component State
   const [orders, setOrders] = useState([]);
-  // Hook for fetching orders
-  useOrders(setOrders);
+  const [selectedOrders, setselectedOrders] = useState<GridRowSelectionModel>(
+    []
+  );
 
+  // Hook for fetching orders
+  const getOrders = useOrders(setOrders);
   // Column declarations for Datagrid
   const columns: GridColDef[] = useMemo(() => {
+    // Create orderType dropdown filter options
     const orderTypeFilters: string[] = [];
     orders.forEach((order: IOrder) => {
-      if (!orderTypeFilters.includes(order.orderType)) {
-        orderTypeFilters.push(order.orderType);
+      if (!orderTypeFilters.includes(order?.orderType)) {
+        orderTypeFilters.push(order?.orderType);
       }
     });
+
     return [
       { field: "orderId", headerName: "Order ID", flex: 1, maxWidth: 300 },
       {
@@ -47,16 +53,27 @@ export const OrderGrid = () => {
         maxWidth: 150,
       },
     ];
-  }, []);
+  }, [orders]);
+
+  const handleDelete =  async () => {
+    await deleteOrders(selectedOrders);
+    getOrders.refetch();
+  }
+  
 
   return (
     <DataGrid
       rows={orders}
       columns={columns}
       getRowId={(row) => row.orderId}
-      slots={{ toolbar: Toolbar }}
+      slots={{ toolbar: OrderToolbar }}
+      slotProps={{ toolbar: { handleDelete } }}
       checkboxSelection
       autoHeight
+      onRowSelectionModelChange={(row) => {
+        setselectedOrders(row);
+      }}
+      rowSelectionModel={selectedOrders}
     />
   );
 };
