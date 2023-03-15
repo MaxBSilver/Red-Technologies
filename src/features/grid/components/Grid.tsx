@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useOrders } from "../api/getOrders";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { Toolbar } from "./Toolbar";
 
 export const Grid = () => {
   // Component State
@@ -41,6 +42,7 @@ export const Grid = () => {
       rows={orders}
       columns={columns}
       getRowId={(row) => row.orderId}
+      slots={{ toolbar: Toolbar }}
       checkboxSelection
       autoHeight
     />
