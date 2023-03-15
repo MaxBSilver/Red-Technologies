@@ -1,12 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Grid } from "./features/grid/components/Grid";
+import { OrderGrid } from "./features/grid/components/OrderGrid";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Grid></Grid>
+      <OrderGrid />
     </QueryClientProvider>
   );
 };
