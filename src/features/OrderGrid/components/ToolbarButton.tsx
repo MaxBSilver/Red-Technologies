@@ -5,6 +5,7 @@ interface IToolBarButtonProps {
   text: string;
   handleClick?: any;
 }
+
 export const ToolbarButton = ({
   Icon,
   text,

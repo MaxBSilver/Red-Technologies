@@ -1,11 +1,13 @@
 import { useMemo, useState } from "react";
-import { useOrders } from "../api/getOrders";
 import { DataGrid, GridColDef, GridRowSelectionModel } from "@mui/x-data-grid";
-import { OrderToolbar } from "./Toolbar";
+import { Toolbar } from "./Toolbar";
+import { useOrders } from "../api/getOrders";
 import { deleteOrders } from "../api/deleteOrders";
+import { createOrder } from "../api/createOrder";
 import { buildColumnDefinitions, getOrderTypeFilters } from "./helper";
+import { IOrder } from "../types/order.type";
 
-export const OrderGrid = () => {
+export const Grid = () => {
   // Component State
   const [orders, setOrders] = useState([]);
   const [selectedOrders, setselectedOrders] = useState<GridRowSelectionModel>(
@@ -21,24 +23,31 @@ export const OrderGrid = () => {
     return buildColumnDefinitions(filters);
   }, [orders]);
 
+  const handleCreate = async (order: IOrder) => {
+    await createOrder(order);
+    getOrders.refetch();
+  };
+
   const handleDelete = async () => {
     await deleteOrders(selectedOrders);
     getOrders.refetch();
   };
 
   return (
-    <DataGrid
-      rows={orders}
-      columns={columns}
-      getRowId={(row) => row.orderId}
-      slots={{ toolbar: OrderToolbar }}
-      slotProps={{ toolbar: { handleDelete } }}
-      checkboxSelection
-      autoHeight
-      onRowSelectionModelChange={(row) => {
-        setselectedOrders(row);
-      }}
-      rowSelectionModel={selectedOrders}
-    />
+    <>
+      <DataGrid
+        rows={orders}
+        columns={columns}
+        getRowId={(row) => row.orderId}
+        slots={{ toolbar: Toolbar }}
+        slotProps={{ toolbar: { handleDelete, handleCreate } }}
+        checkboxSelection
+        autoHeight
+        onRowSelectionModelChange={(row) => {
+          setselectedOrders(row);
+        }}
+        rowSelectionModel={selectedOrders}
+      />
+    </>
   );
 };
