@@ -35,7 +35,7 @@ export const Grid = () => {
     ],
     []
   );
-
+  
   return (
     <DataGrid
       rows={orders}
