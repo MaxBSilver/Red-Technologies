@@ -1,4 +1,4 @@
-export default interface IOrder {
+export interface IOrder {
     createdByUserName: string;
     createdDate: string;
     customerName: string;
