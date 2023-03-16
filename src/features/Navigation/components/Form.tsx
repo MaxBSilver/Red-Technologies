@@ -8,7 +8,7 @@ interface IFormProps {
   onClose: () => void;
 }
 
-type FormValues = {
+interface IFormValues  {
   name: string;
 };
 
@@ -17,9 +17,9 @@ export const Form = ({ onClose }: IFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<IFormValues>();
   const dispatch = useAppDispatch();
-  const onSubmit: SubmitHandler<FormValues> = ({ name }) => {
+  const onSubmit: SubmitHandler<IFormValues> = ({ name }) => {
     dispatch(login(name));
     onClose();
   };

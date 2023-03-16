@@ -2,7 +2,6 @@ import { getOrderTypeFilters, buildColumnDefinitions } from "../util";
 import { orders, columns } from "./data.json";
 
 describe("util", () => {
-    
   describe("getOrderTypeFilters", () => {
     test("Should create a string array of order types", () => {
       const expectedTypes: string[] = [
@@ -32,7 +31,6 @@ describe("util", () => {
       "PurchaseOrder",
     ];
     const columnDefinitions = buildColumnDefinitions(filters);
-    console.log(columnDefinitions);
     expect(columnDefinitions).toEqual(columns);
   });
 });

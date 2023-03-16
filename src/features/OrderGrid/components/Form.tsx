@@ -3,13 +3,13 @@ import Box from "@mui/material/Box";
 import { MenuItem, Button, TextField, Typography } from "@mui/material";
 import { orderTypes } from "../helpers/util";
 
-type FormValues = {
+interface IFormValues {
   customerName: string;
   orderType: string;
-};
+}
 
 interface IFormProps {
-  handleCreate: (data: FormValues) => {};
+  handleCreate: (data: IFormValues) => {};
 }
 
 export const Form = ({ handleCreate }: IFormProps) => {
@@ -18,8 +18,8 @@ export const Form = ({ handleCreate }: IFormProps) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormValues>();
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  } = useForm<IFormValues>();
+  const onSubmit: SubmitHandler<IFormValues> = (data) => {
     handleCreate(data);
     reset();
   };
@@ -55,7 +55,7 @@ export const Form = ({ handleCreate }: IFormProps) => {
         label="Order Type"
         error={!!errors.orderType}
       >
-        {orderTypes.map(({label, value}) => (
+        {orderTypes.map(({ label, value }) => (
           <MenuItem key={value} value={value}>
             {label}
           </MenuItem>
