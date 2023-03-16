@@ -12,7 +12,7 @@
 - Create orders through the create order modal which can be opened by clicking the `Create Order Button`
 ![Screenshot 2023-03-16 at 3 25 04 PM](https://user-images.githubusercontent.com/43679682/225731558-5574ce0a-9aba-454b-976a-6266fbab60c2.png)
 
-- Orders can be saved as drafts. When the order is saved the modal is closed. Reopening the modal will load the users input data from the most recent draft.
+- Orders can be saved as drafts. When the order is saved the modal is closed. Reopening the modal will load the users input data from the most recent draft
 
 - Delete orders by selecting their corresponding checkboxs and then click 'Delete Selected'
 
