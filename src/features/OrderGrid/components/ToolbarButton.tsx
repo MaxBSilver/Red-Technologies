@@ -13,7 +13,7 @@ export const ToolbarButton = ({
 }: IToolBarButtonProps) => {
   return (
     <Button variant="contained" sx={{ height: 32 }} onClick={handleClick}>
-      <Icon/>
+      <Icon />
       {text}
     </Button>
   );

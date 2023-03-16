@@ -5,18 +5,6 @@ import { ToolbarButton } from "./ToolbarButton";
 import AddIcon from "@mui/icons-material/Add";
 import { Form } from "./Form";
 
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
 export const AddModal = ({ handleCreate }: any) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -30,7 +18,18 @@ export const AddModal = ({ handleCreate }: any) => {
         handleClick={handleOpen}
       />
       <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "35%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400,
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
           <Form handleCreate={handleCreate} />
         </Box>
       </Modal>
