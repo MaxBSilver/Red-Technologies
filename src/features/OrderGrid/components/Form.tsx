@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import Box from "@mui/material/Box";
 import { MenuItem, Button, TextField, Typography } from "@mui/material";
-import { orderTypes } from "./helper";
+import { orderTypes } from "../helpers/util";
 
 type FormValues = {
   customerName: string;
@@ -55,9 +55,9 @@ export const Form = ({ handleCreate }: IFormProps) => {
         label="Order Type"
         error={!!errors.orderType}
       >
-        {orderTypes.map((option) => (
-          <MenuItem key={option} value={option}>
-            {option}
+        {orderTypes.map(({label, value}) => (
+          <MenuItem key={value} value={value}>
+            {label}
           </MenuItem>
         ))}
       </TextField>
