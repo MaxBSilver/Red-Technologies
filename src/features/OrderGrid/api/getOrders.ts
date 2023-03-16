@@ -6,7 +6,7 @@ export const getOrders = (): Promise<IOrder[]> => {
   return http.get(`/Orders`).then((res) => res?.data);
 };
 
-export const useOrders = (setOrders: any) => {
+export const useOrders = (setOrders: (data: IOrder[]) => void) => {
   return useQuery<IOrder[]>({
     queryKey: ["orders"],
     queryFn: () => getOrders(),

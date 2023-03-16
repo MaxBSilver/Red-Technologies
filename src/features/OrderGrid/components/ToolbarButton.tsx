@@ -1,9 +1,10 @@
-import { Button } from "@mui/material";
+import { Button,  SvgIconTypeMap } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 interface IToolBarButtonProps {
-  Icon: any;
+  Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string; };
   text: string;
-  handleClick?: any;
+  handleClick?: () => void;
 }
 
 export const ToolbarButton = ({

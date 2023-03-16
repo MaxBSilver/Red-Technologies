@@ -5,7 +5,11 @@ import { ToolbarButton } from "./ToolbarButton";
 import AddIcon from "@mui/icons-material/Add";
 import { Form } from "./Form";
 
-export const AddModal = ({ handleCreate }: any) => {
+interface IAddModalProps {
+  handleCreate: () => {};
+}
+
+export const AddModal = ({ handleCreate }: IAddModalProps) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
