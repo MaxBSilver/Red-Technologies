@@ -3,7 +3,7 @@ import { Stack } from "@mui/material";
 import { ToolbarButton } from "./ToolbarButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { AddModal } from "./AddModal";
-import { OrderSelect } from "./OrderSelect";
+import { TypeSelect } from "./TypeSelect";
 
 interface IToolbarProps {
   handleDelete: () => {};
@@ -20,14 +20,14 @@ export const Toolbar = ({
 }: IToolbarProps) => {
   return (
     <Stack spacing={2} direction="row" sx={{ padding: 2 }}>
-      <GridToolbarQuickFilter  />
+      <GridToolbarQuickFilter />
       <AddModal handleCreate={handleCreate} />
       <ToolbarButton
         Icon={DeleteIcon}
         text={"Delete Selected"}
         handleClick={handleDelete}
       />
-      <OrderSelect orderType={orderType} setOrderType={setOrderType} />
+      <TypeSelect orderType={orderType} setOrderType={setOrderType} />
     </Stack>
   );
 };

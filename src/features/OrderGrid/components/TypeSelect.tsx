@@ -11,7 +11,7 @@ interface IOrderSelectProps {
   setOrderType: any;
 }
 
-export const OrderSelect = ({ orderType, setOrderType }: IOrderSelectProps) => {
+export const TypeSelect = ({ orderType, setOrderType }: IOrderSelectProps) => {
   const handleChange = (event: SelectChangeEvent) => {
     setOrderType(event.target.value);
   };

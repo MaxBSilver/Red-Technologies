@@ -16,15 +16,18 @@ export const Grid = () => {
     []
   );
   const user = useAppSelector((state) => state.user.name);
+
   // Hook for fetching orders
   const getOrders = useOrders({ setOrders, orderType });
+
   // Column declarations for Datagrid
   const columns: GridColDef[] = useMemo(() => {
     // Create orderType dropdown filter options
     const filters = getOrderTypeFilters(orders);
     return buildColumnDefinitions(filters);
   }, [orders]);
-  console.log(orders);
+
+  // Refetch orders with type param if it's defined
   useMemo(() => {
     getOrders.refetch();
   }, [getOrders]);
