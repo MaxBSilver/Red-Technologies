@@ -4,6 +4,7 @@
 # Run the FE container
 - Make sure to add the .env file that was included with this project to the root directory
 - Use the following command to run the container through docker: `npm run dev`
+- If for any reason the above command doesn't work, you can use `npm run start` to run it without the container
 
 # Testing
 - Use the following command to run the testing suite: `npm run test`
@@ -20,7 +21,7 @@
 
 - Order type can be selected to fetch only specific orders
 
-- Adjust the user by clicking the user icon at the top to render a modal. This will adjust the created by for future order creation. 
+- Adjust the user by clicking the user icon at the top to render a modal. This will adjust the created by for future order creation
 ![Screenshot 2023-03-16 at 3 24 26 PM](https://user-images.githubusercontent.com/43679682/225731412-8d4710c6-f81a-4abc-bd4f-0a19aed6ac91.png)
 
 # Future Implementations
