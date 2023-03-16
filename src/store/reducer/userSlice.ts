@@ -13,7 +13,7 @@ const userSlice = createSlice({
   reducers: {
     login(state, action: PayloadAction<string>) {
       state.name = action.payload
-    }
+    },
   },
 })
 

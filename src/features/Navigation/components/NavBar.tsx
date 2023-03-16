@@ -1,10 +1,9 @@
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { AppBar, Toolbar, Box, IconButton, Typography } from "@mui/material";
+import { AppBar, Toolbar, Box,  Typography } from "@mui/material";
 import { useAppSelector } from "../../../store/hooks/hooks";
+import { UserModal } from "./UserModal";
 
 export const NavBar = () => {
   const user = useAppSelector((state) => state.user.name);
-  console.log(user);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -13,15 +12,7 @@ export const NavBar = () => {
             Orders
           </Typography>
           <Typography sx={{ mr: 1 }}> {user}</Typography>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <AccountCircleIcon />
-          </IconButton>
+          <UserModal/>
         </Toolbar>
       </AppBar>
     </Box>
