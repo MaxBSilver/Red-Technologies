@@ -42,4 +42,10 @@ export const buildColumnDefinitions = (filters: string[]) => {
   ];
 };
 
-export const orderTypes: string[] = ["Standard", "SaleOrder", "PurchaseOrder", "TransferOrder", "ReturnOrder"];
+export const orderTypes: string[] = [
+  "Standard",
+  "SaleOrder",
+  "PurchaseOrder",
+  "TransferOrder",
+  "ReturnOrder",
+];

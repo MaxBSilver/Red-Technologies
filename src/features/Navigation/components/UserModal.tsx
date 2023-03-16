@@ -1,26 +1,19 @@
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
-import { ToolbarButton } from "./ToolbarButton";
-import AddIcon from "@mui/icons-material/Add";
 import { Form } from "./Form";
+import { IconButton } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-interface IAddModalProps {
-  handleCreate: () => {};
-}
-
-export const AddModal = ({ handleCreate }: IAddModalProps) => {
+export const UserModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   return (
     <>
-      <ToolbarButton
-        Icon={AddIcon}
-        text={"Create Order"}
-        handleClick={handleOpen}
-      />
+      <IconButton onClick={handleOpen} sx={{color: 'white'}}>
+        <AccountCircleIcon />
+      </IconButton>
       <Modal open={open} onClose={handleClose}>
         <Box
           sx={{
@@ -34,7 +27,7 @@ export const AddModal = ({ handleCreate }: IAddModalProps) => {
             p: 4,
           }}
         >
-          <Form handleCreate={handleCreate} />
+          <Form onClose={handleClose}/>
         </Box>
       </Modal>
     </>

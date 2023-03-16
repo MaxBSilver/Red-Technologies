@@ -8,13 +8,21 @@ type FormValues = {
   orderType: string;
 };
 
-export const Form = ({ handleCreate }: any) => {
+interface IFormProps {
+  handleCreate: (data: FormValues) => {};
+}
+
+export const Form = ({ handleCreate }: IFormProps) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormValues>();
-  const onSubmit: SubmitHandler<FormValues> = (data) => handleCreate(data);
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    handleCreate(data);
+    reset();
+  };
 
   return (
     <Box
@@ -26,9 +34,7 @@ export const Form = ({ handleCreate }: any) => {
       autoComplete="off"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Typography variant="h5">
-        Create Order
-      </Typography>
+      <Typography variant="h5">Create Order</Typography>
       <TextField
         {...register("customerName", {
           required: true,
@@ -37,6 +43,7 @@ export const Form = ({ handleCreate }: any) => {
         })}
         fullWidth
         variant="outlined"
+        autoFocus
         label="Customer Name"
         error={!!errors.customerName}
       />
