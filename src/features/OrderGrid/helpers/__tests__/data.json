@@ -1,0 +1,128 @@
+{
+  "orders": [
+    {
+      "orderId": "9bbbf5db-8c3c-4b6e-8567-ed2c7b8bde13",
+      "orderType": "Standard",
+      "customerName": "test",
+      "createdDate": "Wednesday, 15 March 2023",
+      "createdByUserName": "tom"
+    },
+    {
+      "orderId": "c5b43bc7-f317-4de7-af89-b808998875a0",
+      "orderType": "Standard",
+      "customerName": "test",
+      "createdDate": "Wednesday, 15 March 2023",
+      "createdByUserName": "tom"
+    },
+    {
+      "orderId": "6f9cc5b5-2f62-4e73-8762-801fed9dcfcc",
+      "orderType": "TransferOrder",
+      "customerName": "test",
+      "createdDate": "Wednesday, 15 March 2023",
+      "createdByUserName": "test2"
+    },
+    {
+      "orderId": "37fa5d29-76a9-4f50-96e8-f2b1db5ecaf5",
+      "orderType": "SaleOrder",
+      "customerName": "Dave",
+      "createdDate": "Wednesday, 15 March 2023",
+      "createdByUserName": "Max"
+    },
+    {
+      "orderId": "60fef9e2-5abf-4e9e-bf28-03f5e483303c",
+      "orderType": "Standard",
+      "customerName": "Max",
+      "createdDate": "Wednesday, 15 March 2023",
+      "createdByUserName": "Max"
+    },
+    {
+      "orderId": "9b8a2771-3fb7-4270-ad06-032092def447",
+      "orderType": "Standard",
+      "customerName": "Todd",
+      "createdDate": "Thursday, 16 March 2023",
+      "createdByUserName": "Dave"
+    },
+    {
+      "orderId": "165a5676-f9f6-4a06-aa83-3c76fa9a92a2",
+      "orderType": "SaleOrder",
+      "customerName": "Dave",
+      "createdDate": "Thursday, 16 March 2023",
+      "createdByUserName": "Steve"
+    },
+    {
+      "orderId": "0f48cd34-fe30-426f-8bb0-15c37bd44665",
+      "orderType": "SaleOrder",
+      "customerName": "Winston",
+      "createdDate": "Thursday, 16 March 2023",
+      "createdByUserName": "Steve"
+    },
+    {
+      "orderId": "ca492387-a5d5-4456-8149-899fb69557ff",
+      "orderType": "Standard",
+      "customerName": "test",
+      "createdDate": "Thursday, 16 March 2023",
+      "createdByUserName": "tom"
+    },
+    {
+      "orderId": "9b19ef7d-eff6-48e1-8c0f-ad97edd39637",
+      "orderType": "ReturnOrder",
+      "customerName": "test",
+      "createdDate": "Thursday, 16 March 2023",
+      "createdByUserName": "tom"
+    },
+    {
+      "orderId": "5dd848d5-89ae-4d45-a26c-7959250ea771",
+      "orderType": "SaleOrder",
+      "customerName": "hello1",
+      "createdDate": "Thursday, 16 March 2023",
+      "createdByUserName": "there2"
+    },
+    {
+      "orderId": "704f5951-d408-4f03-bff8-81a09cad35c3",
+      "orderType": "PurchaseOrder",
+      "customerName": "Alex",
+      "createdDate": "Thursday, 16 March 2023",
+      "createdByUserName": "Max"
+    }
+  ],
+  "columns": [
+    {
+      "field": "orderId",
+      "headerName": "Order ID",
+      "flex": 1,
+      "maxWidth": 300
+    },
+    {
+      "field": "orderType",
+      "headerName": "Order Type",
+      "type": "singleSelect",
+      "valueOptions": [
+        "Standard",
+        "TransferOrder",
+        "SaleOrder",
+        "ReturnOrder",
+        "PurchaseOrder"
+      ],
+      "flex": 1,
+      "maxWidth": 150
+    },
+    {
+      "field": "customerName",
+      "headerName": "Customer Name",
+      "flex": 1,
+      "maxWidth": 150
+    },
+    {
+      "field": "createdDate",
+      "headerName": "Created Date",
+      "flex": 1,
+      "maxWidth": 200
+    },
+    {
+      "field": "createdByUserName",
+      "headerName": "Created By",
+      "flex": 1,
+      "maxWidth": 150
+    }
+  ]
+}
