@@ -6,7 +6,7 @@ import { deleteOrders } from "../api/deleteOrders";
 import { createOrder } from "../api/createOrder";
 import { buildColumnDefinitions, getOrderTypeFilters } from "./helper";
 import { IOrder } from "../types/order.type";
-import { useAppSelector } from "../../../hooks/hooks";
+import { useAppSelector } from "../../../store/hooks/hooks";
 
 export const Grid = () => {
   // Component State
@@ -14,7 +14,7 @@ export const Grid = () => {
   const [selectedOrders, setselectedOrders] = useState<GridRowSelectionModel>(
     []
   );
-  const user = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => state.user.name);
 
   // Hook for fetching orders
   const getOrders = useOrders(setOrders);
@@ -26,7 +26,7 @@ export const Grid = () => {
   }, [orders]);
 
   const handleCreate = async (order: IOrder) => {
-    await createOrder({ ...order, ...user });
+    await createOrder({ ...order, user });
     getOrders.refetch();
   };
 

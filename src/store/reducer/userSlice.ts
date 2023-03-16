@@ -2,17 +2,17 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 interface UserState {
-  user: string
+  name: string
 }
 
-const initialState = { user: 'Dave' } as UserState
+const initialState = { name: 'Dave' } as UserState
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
     login(state, action: PayloadAction<string>) {
-      state.user = action.payload
+      state.name = action.payload
     }
   },
 })
