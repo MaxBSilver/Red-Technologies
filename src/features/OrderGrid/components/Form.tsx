@@ -2,6 +2,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Box from "@mui/material/Box";
 import { MenuItem, Button, TextField, Typography } from "@mui/material";
 import { orderTypes } from "../helpers/util";
+import { clearDraft, saveDraft } from "../../../store/reducer/draftSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks/hooks";
 
 interface IFormValues {
   customerName: string;
@@ -10,18 +12,32 @@ interface IFormValues {
 
 interface IFormProps {
   handleCreate: (data: IFormValues) => {};
+  handleClose: () => void;
 }
 
-export const Form = ({ handleCreate }: IFormProps) => {
+export const Form = ({ handleCreate, handleClose }: IFormProps) => {
+  const dispatch = useAppDispatch();
+  const draft = useAppSelector((state) => state.draft);
+  const { customerName, orderType } = draft;
   const {
     register,
     handleSubmit,
     reset,
+    getValues,
     formState: { errors },
   } = useForm<IFormValues>();
+
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     handleCreate(data);
+    dispatch(clearDraft());
     reset();
+    handleClose();
+  };
+
+  const handleSaveDraft = () => {
+    const draft = getValues();
+    dispatch(saveDraft(draft));
+    handleClose();
   };
 
   return (
@@ -45,14 +61,15 @@ export const Form = ({ handleCreate }: IFormProps) => {
         variant="outlined"
         autoFocus
         label="Customer Name"
+        defaultValue={customerName}
         error={!!errors.customerName}
       />
       <TextField
         {...register("orderType", { required: true })}
         fullWidth
         select
-        defaultValue={orderTypes[0]}
         label="Order Type"
+        defaultValue={orderType}
         error={!!errors.orderType}
       >
         {orderTypes.map(({ label, value }) => (
@@ -64,7 +81,9 @@ export const Form = ({ handleCreate }: IFormProps) => {
       <Button type="submit" variant="contained">
         Submit
       </Button>
-      <Button variant="contained">Save as Draft</Button>
+      <Button variant="contained" onClick={handleSaveDraft}>
+        Save as Draft
+      </Button>
     </Box>
   );
 };

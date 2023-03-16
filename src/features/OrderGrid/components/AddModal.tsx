@@ -34,7 +34,7 @@ export const AddModal = ({ handleCreate }: IAddModalProps) => {
             p: 4,
           }}
         >
-          <Form handleCreate={handleCreate} />
+          <Form handleCreate={handleCreate} handleClose={handleClose} />
         </Box>
       </Modal>
     </>
