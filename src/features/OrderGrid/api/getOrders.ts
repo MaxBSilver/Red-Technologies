@@ -4,7 +4,9 @@ import { http } from "./http";
 
 export const getOrders = (orderType: string): Promise<IOrder[]> => {
   if (orderType)
-    return http.get(`/Orders/ByType?orderType=${orderType}`).then((res) => res?.data);
+    return http
+      .get(`/Orders/ByType?orderType=${orderType}`)
+      .then((res) => res?.data);
   return http.get(`/Orders`).then((res) => res?.data);
 };
 
